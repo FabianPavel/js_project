@@ -25,7 +25,7 @@ window.onload = function () {
 
     document.body.appendChild(app.view);
 
-    player = PIXI.Sprite.from('../ghost.png');
+    player = PIXI.Sprite.from('../js/ghost.png');
     player.width = window.innerWidth / 20;
     player.height = window.innerHeight / 18;
     player.anchor.set(0.5);
@@ -34,12 +34,12 @@ window.onload = function () {
 
     app.stage.addChild(player);
 
-    bullet = PIXI.Sprite.from('../ball.png');
+    bullet = PIXI.Sprite.from('../js/ball.png');
     bullet.width = window.innerWidth / 50;
     bullet.height = window.innerHeight / 50;
     bullet.anchor.set(0.5);
 
-    enemy = PIXI.Sprite.from('../e.png');
+    enemy = PIXI.Sprite.from('../js/e.png');
     enemy.width = window.innerWidth / 20;
     enemy.height = window.innerHeight / 20;
     enemy.anchor.set(0.5);
