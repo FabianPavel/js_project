@@ -46,7 +46,7 @@ window.onload = function () {
 
     app.ticker.add(gameLoop);
     app.ticker.add(move);
-    app.ticker.add(enemyMove);ý
+    app.ticker.add(enemyMove);
 
     window.addEventListener("keydown", keysDown);
     window.addEventListener("keyup", keysUp);
