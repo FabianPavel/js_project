@@ -21,13 +21,13 @@ window.onload = function () {
     app = new PIXI.Application(
         {
             width: window.innerWidth - 20,
-            height: window.innerHeight - 20,
+            height: window.innerHeight - 100,
             backgroundColor: 0xAAAAAA
 
         }
     );
 
-    document.body.appendChild(app.view);
+    document.querySelector("#game").appendChild(app.view);
     player = PIXI.Sprite.from('../img/ghost.png');
     player.width = window.innerWidth / 20;
     player.height = window.innerHeight / 18;
