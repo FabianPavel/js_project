@@ -30,7 +30,7 @@ window.onload = function () {
     );
 
     document.querySelector("#game").appendChild(app.view);
-    player = PIXI.Sprite.from('https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/PrezDebata2022.jpg/170px-PrezDebata2022.jpg');
+    player = PIXI.Sprite.from('./img/ghost.png');
     player.width = window.innerWidth / 22;
     player.height = window.innerHeight / 20;
     player.anchor.set(0.5);
@@ -39,14 +39,14 @@ window.onload = function () {
 
     app.stage.addChild(player);
 
-    bullet = PIXI.Sprite.from('../img/ball.png');
+    bullet = PIXI.Sprite.from('./img/ball.png');
     bullet.width = window.innerWidth / 50;
     bullet.height = window.innerHeight / 50;
     bullet.x = player.x;
-    bullet.y = player.y
+    bullet.y = player.ya
     bullet.anchor.set(0.5);
 
-    enemy = PIXI.Sprite.from('../img/e.png');
+    enemy = PIXI.Sprite.from('./img/e.png');
     enemy.width = window.innerWidth / 30;
     enemy.height = window.innerHeight / 31;
     enemy.anchor.set(0.6);
