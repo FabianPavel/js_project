@@ -24,8 +24,7 @@ window.onload = function () {
     );
 
     document.body.appendChild(app.view);
-
-    player = PIXI.Sprite.from('../img/ghost.png');
+    player = PIXI.Sprite.from('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4xucJkJLx2KNmmQ2Kd8b2db4kLbh_rYOzeQ&usqp=CAU');
     player.width = window.innerWidth / 20;
     player.height = window.innerHeight / 18;
     player.anchor.set(0.5);
