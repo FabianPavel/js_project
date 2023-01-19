@@ -43,7 +43,7 @@ window.onload = function () {
     enemy = PIXI.Sprite.from('../img/e.png');
     enemy.width = window.innerWidth / 20;
     enemy.height = window.innerHeight / 20;
-    enemy.anchor.set(0.5);
+    enemy.anchor.set(0.6);
 
     app.ticker.add(gameLoop);
     app.ticker.add(move);
