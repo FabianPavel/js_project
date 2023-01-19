@@ -13,6 +13,9 @@ let y;
 let enemies = 0;
 let max = 1;
 let score = 0;
+let interact = 0;
+let eSpeed = 1.8;
+let bSpeed = 2.2;
 
 window.onload = function () {
     app = new PIXI.Application(
@@ -25,7 +28,7 @@ window.onload = function () {
     );
 
     document.body.appendChild(app.view);
-    player = PIXI.Sprite.from('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4xucJkJLx2KNmmQ2Kd8b2db4kLbh_rYOzeQ&usqp=CAU');
+    player = PIXI.Sprite.from('../img/ghost.png');
     player.width = window.innerWidth / 20;
     player.height = window.innerHeight / 18;
     player.anchor.set(0.5);
@@ -34,10 +37,11 @@ window.onload = function () {
 
     app.stage.addChild(player);
 
-
     bullet = PIXI.Sprite.from('../img/ball.png');
     bullet.width = window.innerWidth / 50;
     bullet.height = window.innerHeight / 50;
+    bullet.x = player.x;
+    bullet.y = player.y
     bullet.anchor.set(0.5);
 
     enemy = PIXI.Sprite.from('../img/e.png');
@@ -82,8 +86,8 @@ window.onload = function () {
         Y = Y / Length;
 
         // Move towards the player
-        enemy.x += X * speed;
-        enemy.y += Y * speed;
+        enemy.x += X * eSpeed;
+        enemy.y += Y * eSpeed;
 
 
     }
@@ -98,10 +102,10 @@ window.onload = function () {
         toY = toY / Length;
 
         // Move towards the player
-        bullet.x += toX * speed;
-        x += toX * speed;
-        bullet.y += toY * speed;
-        y += toY * speed;
+        bullet.x += toX * bSpeed;
+        x += toX * bSpeed;
+        bullet.y += toY * bSpeed;
+        y += toY * bSpeed;
 
         //console.log(Math.ceil(x), Math.ceil(y), mouseX, mouseY);
         if(Math.ceil(x) === mouseX && Math.ceil(y) === mouseY || Math.ceil(x - 1) === mouseX && Math.ceil(y) === mouseY || Math.ceil(x + 1) === mouseX && Math.ceil(y) === mouseY
@@ -127,28 +131,55 @@ window.onload = function () {
             y = bullet.y;
 
             bullets = 1;
+            interact ++;
         }
     }
 
     function collision(a, b){
-        
+        let aBox = a.getBounds();
+        let bBox = b.getBounds();
+
+        return aBox.x + aBox.width - 15 > bBox.x &&
+            aBox.x < bBox.x + bBox.width - 15 &&
+            aBox.y + aBox.height - 15 > bBox.y &&
+            aBox.y < bBox.y + bBox.height - 15;
     }
 
 
     function gameLoop(){
         if(keys["87"] || keys["38"]){
-            player.y -= 2;
+            player.y -= speed;
+            interact++;
         }
         if(keys["83"] || keys["40"]){
-            player.y += 2;
+            player.y += speed;
+            interact++;
         }
         if(keys["65"] || keys["37"]){
-            player.x -= 2;
+            player.x -= speed;
+            interact++;
         }
         if(keys["68"] || keys["39"]){
-            player.x += 2;
+            player.x += speed;
+            interact++;
         }
 
+
+        if(collision(bullet, enemy) && interact !== 0){
+            score++;
+            console.log(score);
+            max++;
+            bullet.x = player.x + 2;
+            bullet.y = player.y + 2;
+            app.stage.removeChild(bullet);
+            bullets = 0;
+        }
+
+        if(collision(player, enemy) && interact !== 0){
+            app.ticker.remove(gameLoop);
+            app.ticker.remove(enemyMove);
+            app.ticker.remove(move);
+        }
 
     }
 
