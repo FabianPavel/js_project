@@ -11,7 +11,8 @@ let speed = 2;
 let x;
 let y;
 let enemies = 0;
-let max = 2;
+let max = 1;
+let score = 0;
 
 window.onload = function () {
     app = new PIXI.Application(
@@ -128,6 +129,11 @@ window.onload = function () {
             bullets = 1;
         }
     }
+
+    function collision(a, b){
+        
+    }
+
 
     function gameLoop(){
         if(keys["87"] || keys["38"]){
