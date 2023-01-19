@@ -1,6 +1,5 @@
 let app;
 let player;
-let playerSprite;
 let bullet;
 let enemy;
 
@@ -34,6 +33,7 @@ window.onload = function () {
     player.y = app.view.height / 2;
 
     app.stage.addChild(player);
+
 
     bullet = PIXI.Sprite.from('../img/ball.png');
     bullet.width = window.innerWidth / 50;
