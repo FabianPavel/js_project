@@ -1,3 +1,5 @@
+const s = document.getElementById("score");
+
 let app;
 let player;
 let bullet;
@@ -28,9 +30,9 @@ window.onload = function () {
     );
 
     document.querySelector("#game").appendChild(app.view);
-    player = PIXI.Sprite.from('../img/ghost.png');
-    player.width = window.innerWidth / 20;
-    player.height = window.innerHeight / 18;
+    player = PIXI.Sprite.from('https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/PrezDebata2022.jpg/170px-PrezDebata2022.jpg');
+    player.width = window.innerWidth / 22;
+    player.height = window.innerHeight / 20;
     player.anchor.set(0.5);
     player.x = app.view.width / 2;
     player.y = app.view.height / 2;
@@ -45,8 +47,8 @@ window.onload = function () {
     bullet.anchor.set(0.5);
 
     enemy = PIXI.Sprite.from('../img/e.png');
-    enemy.width = window.innerWidth / 25;
-    enemy.height = window.innerHeight / 26;
+    enemy.width = window.innerWidth / 30;
+    enemy.height = window.innerHeight / 31;
     enemy.anchor.set(0.6);
 
     app.ticker.add(gameLoop);
@@ -173,6 +175,7 @@ window.onload = function () {
             bullet.y = player.y + 2;
             app.stage.removeChild(bullet);
             bullets = 0;
+            s.innerHTML = `SCORE: ${score}`;
         }
 
         if(collision(player, enemy) && interact !== 0){
