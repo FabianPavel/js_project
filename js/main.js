@@ -24,7 +24,7 @@ window.onload = function () {
     );
 
     document.body.appendChild(app.view);
-    //import playerSprite from '../img/ghost.png';
+
     player = PIXI.Sprite.from('../img/ghost.png');
     player.width = window.innerWidth / 20;
     player.height = window.innerHeight / 18;
@@ -41,8 +41,8 @@ window.onload = function () {
     bullet.anchor.set(0.5);
 
     enemy = PIXI.Sprite.from('../img/e.png');
-    enemy.width = window.innerWidth / 20;
-    enemy.height = window.innerHeight / 20;
+    enemy.width = window.innerWidth / 25;
+    enemy.height = window.innerHeight / 26;
     enemy.anchor.set(0.6);
 
     app.ticker.add(gameLoop);
